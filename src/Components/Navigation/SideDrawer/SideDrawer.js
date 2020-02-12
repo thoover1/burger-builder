@@ -2,7 +2,7 @@ import React from "react";
 import Logo from "../../../assets/burger-logo.png";
 import NavigationItems from "../NavigationItems/NavigationItems";
 import Backdrop from "../../UI/Backdrop/Backdrop";
-import Aux from "../../../hoc/Auxillary";
+import Aux from "../../../hoc/Auxillary/Auxillary";
 import "./SideDrawer.css";
 
 const sideDrawer = props => {

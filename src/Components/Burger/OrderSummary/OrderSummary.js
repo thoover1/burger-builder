@@ -1,6 +1,6 @@
 import React from "react";
 import "./OrderSummary.css";
-import Aux from "../../../hoc/Auxillary";
+import Aux from "../../../hoc/Auxillary/Auxillary";
 
 const orderSummary = props => {
   let ingredientSummary = Object.keys(props.ingredients).map(igKey => {
