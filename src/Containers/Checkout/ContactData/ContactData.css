@@ -42,3 +42,8 @@
     width: 500px;
   }
 }
+
+.Button:disabled {
+  color: lightgray;
+  cursor: not-allowed;
+}
