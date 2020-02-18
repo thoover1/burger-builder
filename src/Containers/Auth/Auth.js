@@ -3,6 +3,7 @@ import Input from "../../Components/UI/Input/Input";
 import * as actions from "../../store/actions/index";
 import "./Auth.css";
 import { connect } from "react-redux";
+import Spinner from "../../Components/UI/Spinner/Spinner";
 
 class Auth extends Component {
   state = {
@@ -98,7 +99,7 @@ class Auth extends Component {
       });
     }
 
-    const form = formElementArray.map(formElement => (
+    let form = formElementArray.map(formElement => (
       <Input
         key={formElement.id}
         elementType={formElement.config.elementType}
@@ -110,20 +111,41 @@ class Auth extends Component {
         change={event => this.inputChangedHandler(event, formElement.id)}
       />
     ));
+
+    if (this.props.loading) {
+      form = <Spinner />;
+    }
+
+    let errorMessage = null;
+
+    if (this.props.error) {
+      errorMessage = <p>{this.props.error.message}</p>;
+    }
+
     return (
       <div className="Auth">
         <button onClick={this.swithAuthModeHandler} className="Button Danger">
           SWITCH TO {this.state.isSignUp ? "SIGN UP" : "SIGN IN"}{" "}
         </button>
+        {errorMessage}
         <form onSubmit={this.submitHandler}>
           {form}
-          <p>*Password must be at least 6 characters long</p>
+          <p className="PasswordText">
+            *Password must be at least 6 characters long
+          </p>
           <button className="Button Success">SUBMIT</button>
         </form>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    loading: state.auth.loading,
+    error: state.auth.error
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -132,4 +154,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(Auth);
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);

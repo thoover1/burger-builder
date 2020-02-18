@@ -48,8 +48,9 @@
   cursor: not-allowed;
 }
 
-p {
+.PasswordText {
   width: 100%;
+  font-size: 12px;
   display: flex;
   justify-content: flex-start;
   padding-left: 15px;
