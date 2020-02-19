@@ -16,7 +16,10 @@ const sideDrawer = props => {
         show={props.open}
         click={(props.closed, props.drawerToggleClick)}
       />
-      <div className={attachedClasses.join(" ")}>
+      <div
+        className={attachedClasses.join(" ")}
+        onClick={(props.closed, props.drawerToggleClick)}
+      >
         <img src={Logo} alt="" />
         <nav>
           <NavigationItems isAuthenticated={props.isAuth} />
