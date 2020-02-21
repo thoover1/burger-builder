@@ -2,7 +2,7 @@ import React from "react";
 import "./OrderSummary.css";
 import Aux from "../../../hoc/Auxillary/Auxillary";
 
-const orderSummary = props => {
+const OrderSummary = props => {
   let ingredientSummary = Object.keys(props.ingredients).map(igKey => {
     return (
       <li key={igKey}>
@@ -30,4 +30,4 @@ const orderSummary = props => {
   );
 };
 
-export default orderSummary;
+export default OrderSummary;
